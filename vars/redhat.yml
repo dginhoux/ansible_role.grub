@@ -1,0 +1,30 @@
+---
+
+# grub mkconfig binary
+grub_mkconfig_command: /usr/sbin/grub2-mkconfig
+
+# grub boot config file
+grub_generated_config_file: /boot/grub2/grub.cfg
+
+# grub symlink config file_dest
+grub_config_file_symlink: /etc/sysconfig/grub
+
+# defaults for grub config
+grub_config_defaults:
+  # GRUB_DEFAULT: saved
+  # GRUB_TIMEOUT: 1
+  # GRUB_DISTRIBUTOR: "$(sed 's, release .*$,,g' /etc/system-release)"
+  GRUB_CMDLINE_LINUX_DEFAULT: "crashkernel=auto quiet"
+  # GRUB_DISABLE_RECOVERY: true
+  # GRUB_DISABLE_SUBMENU: true
+  # GRUB_TERMINAL_OUTPUT: console
+
+  GRUB_TIMEOUT: 5
+  GRUB_DISTRIBUTOR: "$(sed 's, release .*$,,g' /etc/system-release)"
+  GRUB_DEFAULT: saved
+  GRUB_DISABLE_SUBMENU: "true"
+  GRUB_TERMINAL_OUTPUT: console
+  # GRUB_CMDLINE_LINUX: "rhgb quiet selinux=0 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M"
+  # GRUB_CMDLINE_LINUX: "resume=/dev/mapper/vg0-lv--swap rd.lvm.lv=vg0/lv-root rd.lvm.lv=vg0/lv-swap rd.lvm.lv=vg0/lv-usr rhgb quiet selinux=0 crashkernel=1G-4G:192M,4G-64G:256M,64G-:512M"
+  GRUB_DISABLE_RECOVERY: "true"
+  GRUB_ENABLE_BLSCFG: "true"

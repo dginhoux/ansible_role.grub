@@ -1,0 +1,24 @@
+{{ ansible_managed | comment }}
+
+{% macro format_value(value) %}
+  {%- if value is string %}
+{{ '"' ~ value ~ '"' }}
+  {%- elif value is boolean %}
+{{ value | ternary('true', 'false') }}
+  {%- elif value is sequence %}
+{{ '("' ~ value | join('" "') ~'")' }}
+  {%- else %}
+{{ value }}
+  {%- endif %}
+{% endmacro %}
+
+{% for name, value in cfg.items() %}
+  {% if value is mapping %}
+
+{{ value.comment | default("") | comment(prefix_count=0, postfix_count=0) }}
+{{ name }}={{ format_value(value.value) }}
+
+  {% else %}
+{{ name }}={{ format_value(value) }}
+  {% endif %}
+{% endfor %}

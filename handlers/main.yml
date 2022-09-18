@@ -1,0 +1,7 @@
+---
+- name: update grub config
+  ansible.builtin.command: "{{ grub_mkconfig_command }} -o '{{ grub_generated_config_file }}'"
+  register: grub_update_result
+  failed_when: grub_update_result.rc != 0
+  changed_when: true
+  when: ansible_virtualization_type != "docker"

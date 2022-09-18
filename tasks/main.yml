@@ -1,0 +1,37 @@
+---
+- name: load role asserts
+  ansible.builtin.include_tasks:
+    file: tasks/asserts.yml
+  when: asserts_bypass is not defined or not asserts_bypass
+
+- name: load role variables
+  ansible.builtin.include_vars:
+    file: "{{ included_vars }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+        - "{{ ansible_system | lower }}.yml"
+        - "main.yml"
+      paths:
+        - "vars"
+      skip: true
+  loop_control:
+    loop_var: included_vars
+
+- name: load role tasks
+  ansible.builtin.include_tasks:
+    file: "{{ included_tasks }}"
+  with_first_found:
+    - files:
+        - "{{ ansible_distribution | lower }}-{{ ansible_distribution_version | lower }}.yml"
+        - "{{ ansible_distribution | lower }}.yml"
+        - "{{ ansible_os_family | lower }}.yml"
+        - "{{ ansible_system | lower }}.yml"
+        - "main.yml"
+      paths:
+        - "tasks/distribution"
+      skip: true
+  loop_control:
+    loop_var: included_tasks

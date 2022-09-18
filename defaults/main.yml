@@ -1,0 +1,25 @@
+---
+grub_configure: "generate"
+
+# the GRUB configuration variables
+grub_config: {}
+
+# grub user config file
+grub_config_file: /etc/default/grub
+
+# force GRUB to update its configuration
+grub_force_update: false
+
+
+# packages to be installed
+grub_dependencies:
+  - grub2
+
+# extra GRUB dependencies to install (e.g. 'grub-btrfs')
+grub_extra_dependencies: []
+
+# GRUB dependencies to be removed
+grub_remove_dependencies: "{{ ['os-prober'] if not ansible_os_family == 'RedHat' else [] }}"
+
+
+
