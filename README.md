@@ -70,7 +70,7 @@ Example Playbook
 License
 -------
 
-BSD ; This role is forked from : https://github.com/aisbergg/ansible-role-grub
+BSD ; This role is inspired from https://github.com/aisbergg/ansible-role-grub
 
 
 Author Information
