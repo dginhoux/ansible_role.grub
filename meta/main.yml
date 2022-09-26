@@ -1,7 +1,7 @@
 ---
 galaxy_info:
   role_name: grub
-  description: configure grub
+  description: dginhoux.grub
   author: Dany GINHOUX
   company: dginhoux
   license: MIT
