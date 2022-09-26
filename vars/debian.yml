@@ -15,7 +15,6 @@ grub_config_defaults:
   # GRUB_HIDDEN_TIMEOUT: 0
   # GRUB_HIDDEN_TIMEOUT_QUIET: true
   # GRUB_CMDLINE_LINUX: ""
-
   # If you change this file, run 'update-grub' afterwards to update
   # /boot/grub/grub.cfg.
   # For full documentation of the options in this file, see:
