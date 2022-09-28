@@ -20,6 +20,3 @@ grub_extra_dependencies: []
 
 # GRUB dependencies to be removed
 grub_remove_dependencies: "{{ ['os-prober'] if not ansible_os_family == 'RedHat' else [] }}"
-
-
-
