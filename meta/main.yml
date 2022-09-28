@@ -1,7 +1,8 @@
 ---
 galaxy_info:
   role_name: grub
-  description: dginhoux.grub
+  description: |
+    This role configure grub bootloader.
   author: Dany GINHOUX
   company: dginhoux
   license: MIT
