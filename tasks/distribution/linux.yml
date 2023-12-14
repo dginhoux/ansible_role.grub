@@ -6,18 +6,21 @@
     grub_configure == "generate"
   block:
     - name: Install dependencies
+      become: true
       ansible.builtin.package:
         name: "{{ item }}"
         state: present
       loop: "{{ grub_dependencies + grub_extra_dependencies }}"
 
     - name: Remove unwanted dependencies
+      become: true
       ansible.builtin.package:
         name: "{{ item }}"
         state: absent
       loop: "{{ grub_remove_dependencies }}"
 
     - name: Create grub config
+      become: true
       ansible.builtin.template:
         src: grub.j2
         dest: "{{ grub_config_file }}"
@@ -32,6 +35,7 @@
         cfg: "{{ grub_config_defaults | combine(grub_config) }}"
 
     - name: Create symlink for RedHat
+      become: true
       ansible.builtin.file:
         src: "{{ grub_config_file }}"
         dest: "{{ grub_config_file_symlink }}"
@@ -41,6 +45,7 @@
       when: ansible_os_family == "RedHat"
 
     - name: Force update of grub config
+      become: true
       ansible.builtin.command: /bin/true
       notify: update grub config
       when: grub_force_update
