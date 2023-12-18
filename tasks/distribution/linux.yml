@@ -26,7 +26,7 @@
         dest: "{{ grub_config_file }}"
         owner: root
         group: root
-        mode: 0644
+        mode: "0644"
         validate: bash -n %s
         trim_blocks: true
         lstrip_blocks: true
