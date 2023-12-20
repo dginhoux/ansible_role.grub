@@ -48,9 +48,10 @@ git clone https://github.com/dginhoux/ansible_role.grub dginhoux.grub
 #### EXAMPLE PLAYBOOK
 
 ```yaml
-- hosts: all
+- name: Playbook
+  hosts: all
   roles:
-    - name: start role dginhoux.grub
+    - name: Start role dginhoux.grub
       ansible.builtin.include_role:
         name: dginhoux.grub
 ```
@@ -60,7 +61,9 @@ git clone https://github.com/dginhoux/ansible_role.grub dginhoux.grub
 
 #### DEFAULT VARIABLES
 
-Defaults variables defined in `defaults/main.yml` : 
+Defaults variables defined in `defaults/main.yml`
+
+#### EXAMPLES VARIABLES
 
 ```yaml
 grub_configure: "generate"
